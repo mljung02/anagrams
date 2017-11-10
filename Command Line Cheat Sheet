@@ -1,0 +1,28 @@
+## Command Line:
+
+Redis Start:		redis-server --daemonize yes
+Redis Shutdown:		redis-cli shutdown
+
+From Ubuntu home: 	cd /mnt/c/Users/justi/OneDrive/Documents/GitHub/anagramsAPI
+
+Shorten prompt:		PS1='\u:\W\$ '
+
+Deploy locally:		FLASK_APP=anagrams.py flask run
+
+API GET:			curl -i -X GET http://127.0.0.1:5000/anagrams/read.json
+					curl -i -X GET http://127.0.0.1:5000/anagrams/read.json?limit=1
+
+API POST:			curl -i -X POST -d '{ "words": ["read", "dear", "dare"] }' http://127.0.0.1:5000/words.json
+
+API DELETE all:		curl -i -X DELETE http://localhost:5000/words.json
+API DELETE single:	curl -i -X DELETE http://localhost:5000/words/read.json	
+
+API POST ALT:		curl -i -X POST -H "Content-Type: application/json" -d '{ "words": ["read", "dear", "dare"] }' http://127.0.0.1:5000/words.json
+
+API GET stats:		curl -i -X GET http://127.0.0.1:5000/words/stats.json
+
+API GET most:		curl -i -X GET http://127.0.0.1:5000/sets/anagrams/size/max.json
+
+API check angarams (good):		curl -i -X POST -d '{ "words": ["read", "dear", "dare"] }' http://127.0.0.1:5000/anagrams.json
+
+API check angarams (bad):		curl -i -X POST -d '{ "words": ["dork", "dear", "dare"] }' http://127.0.0.1:5000/anagrams.json

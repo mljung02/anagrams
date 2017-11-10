@@ -1,0 +1,35 @@
+#!/bin/bash
+echo "Loading dictionary..."
+datafilepath="dictionary.txt"
+
+#i="read"
+#data='{"words":["$i"]}'
+url="http://127.0.0.1:5000/words.json"
+
+#curl -i -X POST -d "$data" "$url"
+
+#curl -i -X POST -d '{\"words\":[\"read\"]}' http://127.0.0.1:5000/words.json
+#echo $TEST
+
+#RESPONSE=`$TEST`
+#echo $RESPONSE
+
+while read row
+do
+	for i in $row
+		do
+			data1='{"words":["'
+			data2="$i"
+			data3='"]}'
+			echo "$data1$data2$data3"
+			curl -i -X POST -d "$data1$data2$data3" "$url"
+			#data="{\"words\":[\"$i\"]}"
+			#ADDWORD="curl -i -X POST -d $data $url"
+			
+			#echo  $ADDWORD
+			
+			#RESPONSE=`$ADDWORD`
+			#echo $RESPONSE
+		done
+	
+done < $datafilepath
